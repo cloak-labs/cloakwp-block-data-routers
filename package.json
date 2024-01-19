@@ -1,0 +1,52 @@
+{
+  "name": "@cloakwp/block-data-routers",
+  "version": "0.0.1",
+  "description": "A collection of DataRouter functions to accompany all @cloakwp/blocks-{framework} packages.",
+  "main": "dist/index",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "dev": "tsc -p tsconfig.json -w",
+    "build": "npm run build-ts",
+    "build-ts": "tsc-silent -p tsconfig.json --suppress",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "zzz-postpublish": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cloak-labs/cloakwp-block-data-routers.git"
+  },
+  "keywords": [
+    "wordpress",
+    "wp",
+    "cloakwp",
+    "cloak",
+    "headless",
+    "decoupled",
+    "gutenberg",
+    "blocks",
+    "data routers"
+  ],
+  "author": "Kaelan Smith",
+  "license": "LGPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/cloak-labs/cloakwp-block-data-routers/issues"
+  },
+  "homepage": "https://github.com/cloak-labs/cloakwp-block-data-routers#readme",
+  "devDependencies": {
+    "@cloakui/types": ">= 0.0.1",
+    "@types/node": "^18.18.1",
+    "tsc-watch": "^5.0.3",
+    "typescript": "^5.3.2"
+  },
+  "peerDependencies": {
+    "@cloakui/styles": ">= 0.0.1",
+    "@cloakui/utils": ">= 0.0.1",
+    "cloakwp": ">= 0.3.8"
+  }
+}
