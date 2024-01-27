@@ -33,10 +33,11 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
   return {
     src: url,
     href,
-    width: parseInt(width),
-    height: parseInt(height),
+    width: parseInt(width) || 800,
+    height: parseInt(height) || 400,
     alt,
     caption,
+    noShadow: wpClassName?.includes("is-style-no-shadow"),
     className: cx(
       align == "full" ? "rounded-none" : "rounded-lg",
       scale == "contain" ? "object-contain" : "object-cover",

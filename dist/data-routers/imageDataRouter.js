@@ -18,10 +18,11 @@ const imageDataRouter = (block) => {
     return {
         src: url,
         href,
-        width: parseInt(width),
-        height: parseInt(height),
+        width: parseInt(width) || 800,
+        height: parseInt(height) || 400,
         alt,
         caption,
+        noShadow: wpClassName?.includes("is-style-no-shadow"),
         className: (0, styles_1.cx)(align == "full" ? "rounded-none" : "rounded-lg", scale == "contain" ? "object-contain" : "object-cover", wpClassName?.includes("is-style-rounded") && "rounded-full", classes),
         cntrClassName: (0, styles_1.cx)(align == "center" ? "mx-auto" : align == "right" ? "ml-auto" : ""),
         cntrStyle: {

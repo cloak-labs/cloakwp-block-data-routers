@@ -10,7 +10,7 @@ const columnsDataRouter = (block, blockRenderer) => {
     // get all column width percentage values into an array:
     const columnWidths = innerBlocks.map((col) => {
         const widthVal = parseFloat(col.attrs.width);
-        return widthVal ? widthVal : 100 / innerBlocks.length; // if no width is specified, we make this safe mathematical assumption
+        return widthVal || 100 / innerBlocks.length; // if no width is specified, we make this safe mathematical assumption
     });
     const { gridCols, colSpans } = (0, utils_1.getGridLayoutFromColumnWidths)(columnWidths);
     const gridColsClass = `grid-cols-${gridCols}`;

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.columnDataRouter = exports.columnsDataRouter = exports.htmlDataRouter = exports.blockquoteDataRouter = exports.buttonsDataRouter = exports.buttonDataRouter = exports.listItemDataRouter = exports.listDataRouter = exports.imageDataRouter = exports.typographyDataRouter = void 0;
+exports.separatorDataRouter = exports.columnDataRouter = exports.columnsDataRouter = exports.htmlDataRouter = exports.blockquoteDataRouter = exports.buttonsDataRouter = exports.buttonDataRouter = exports.listItemDataRouter = exports.listDataRouter = exports.imageDataRouter = exports.typographyDataRouter = void 0;
 var typographyDataRouter_1 = require("./data-routers/typographyDataRouter");
 Object.defineProperty(exports, "typographyDataRouter", { enumerable: true, get: function () { return typographyDataRouter_1.typographyDataRouter; } });
 var imageDataRouter_1 = require("./data-routers/imageDataRouter");
@@ -21,3 +21,5 @@ var columnsDataRouter_1 = require("./data-routers/columnsDataRouter");
 Object.defineProperty(exports, "columnsDataRouter", { enumerable: true, get: function () { return columnsDataRouter_1.columnsDataRouter; } });
 var columnDataRouter_1 = require("./data-routers/columnDataRouter");
 Object.defineProperty(exports, "columnDataRouter", { enumerable: true, get: function () { return columnDataRouter_1.columnDataRouter; } });
+var separatorDataRouter_1 = require("./data-routers/separatorDataRouter");
+Object.defineProperty(exports, "separatorDataRouter", { enumerable: true, get: function () { return separatorDataRouter_1.separatorDataRouter; } });

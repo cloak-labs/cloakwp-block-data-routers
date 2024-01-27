@@ -8,3 +8,4 @@ export { blockquoteDataRouter } from "./data-routers/blockquoteDataRouter";
 export { htmlDataRouter } from "./data-routers/htmlDataRouter";
 export { columnsDataRouter } from "./data-routers/columnsDataRouter";
 export { columnDataRouter } from "./data-routers/columnDataRouter";
+export { separatorDataRouter } from "./data-routers/separatorDataRouter";

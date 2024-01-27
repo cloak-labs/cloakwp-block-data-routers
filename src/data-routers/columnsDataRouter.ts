@@ -21,7 +21,7 @@ export const columnsDataRouter: WPDataRouter<GenericParentComponent> = (
   // get all column width percentage values into an array:
   const columnWidths: number[] = innerBlocks.map((col) => {
     const widthVal = parseFloat(col.attrs.width);
-    return widthVal ? widthVal : 100 / innerBlocks.length; // if no width is specified, we make this safe mathematical assumption
+    return widthVal || 100 / innerBlocks.length; // if no width is specified, we make this safe mathematical assumption
   });
 
   const { gridCols, colSpans } = getGridLayoutFromColumnWidths(columnWidths);
