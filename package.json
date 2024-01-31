@@ -47,6 +47,9 @@
   "peerDependencies": {
     "@cloakui/styles": ">= 0.0.1",
     "@cloakui/utils": ">= 0.0.1",
-    "cloakwp": ">= 0.3.8"
+    "cloakwp": ">= 0.4.1"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

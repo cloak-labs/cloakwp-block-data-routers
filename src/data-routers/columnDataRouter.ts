@@ -1,15 +1,17 @@
-import { wpBlockStyleBuilder, WPDataRouter } from "cloakwp";
+import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp";
 import { cx } from "@cloakui/styles";
-import type { GenericParentComponent } from "@cloakui/types";
+import { type GenericParentComponent } from "@cloakui/types";
 
-export type ColumnProps = GenericParentComponent & {
-  span: number;
-};
-
-export const columnDataRouter: WPDataRouter<ColumnProps> = (
+export const columnDataRouter: WPDataRouter<
+  GenericParentComponent & {
+    span: number;
+  }
+> = (
   block,
   blockRenderer
-): ColumnProps => {
+): GenericParentComponent & {
+  span: number;
+} => {
   const { classes, styles } = wpBlockStyleBuilder(block);
 
   const {

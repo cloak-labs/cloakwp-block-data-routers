@@ -1,7 +1,8 @@
-import { wpBlockStyleBuilder, WPDataRouter } from "cloakwp";
+import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp";
+import { getColumnWidths } from "../shared/utils";
 import { getGridLayoutFromColumnWidths } from "@cloakui/utils";
 import { cx } from "@cloakui/styles";
-import { GenericParentComponent } from "@cloakui/types";
+import { type GenericParentComponent } from "@cloakui/types";
 
 export const columnsDataRouter: WPDataRouter<GenericParentComponent> = (
   block,
@@ -18,12 +19,7 @@ export const columnsDataRouter: WPDataRouter<GenericParentComponent> = (
     } = {},
   } = block;
 
-  // get all column width percentage values into an array:
-  const columnWidths: number[] = innerBlocks.map((col) => {
-    const widthVal = parseFloat(col.attrs.width);
-    return widthVal || 100 / innerBlocks.length; // if no width is specified, we make this safe mathematical assumption
-  });
-
+  const columnWidths = getColumnWidths(innerBlocks); // get all column width percentage values into an array
   const { gridCols, colSpans } = getGridLayoutFromColumnWidths(columnWidths);
 
   const gridColsClass = `grid-cols-${gridCols}`;
@@ -44,8 +40,8 @@ export const columnsDataRouter: WPDataRouter<GenericParentComponent> = (
     className: cx(
       classes,
       className,
-      isStackedOnMobile ? responsiveColClasses : gridColsClass,
-      !margin && "my-20"
+      isStackedOnMobile ? responsiveColClasses : gridColsClass
+      // !margin && "my-20"
     ),
     style: styles,
     children,
