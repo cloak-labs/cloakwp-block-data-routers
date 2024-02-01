@@ -40,8 +40,8 @@ export const columnsDataRouter: WPDataRouter<GenericParentComponent> = (
     className: cx(
       classes,
       className,
-      isStackedOnMobile ? responsiveColClasses : gridColsClass
-      // !margin && "my-20"
+      isStackedOnMobile ? responsiveColClasses : gridColsClass,
+      !margin && "my-20"
     ),
     style: styles,
     children,

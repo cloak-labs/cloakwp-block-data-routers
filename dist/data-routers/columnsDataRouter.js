@@ -22,9 +22,7 @@ const columnsDataRouter = (block, blockRenderer) => {
         customProps: { colSpans },
     });
     return {
-        className: (0, styles_1.cx)(classes, className, isStackedOnMobile ? responsiveColClasses : gridColsClass
-        // !margin && "my-20"
-        ),
+        className: (0, styles_1.cx)(classes, className, isStackedOnMobile ? responsiveColClasses : gridColsClass, !margin && "my-20"),
         style: styles,
         children,
     };
