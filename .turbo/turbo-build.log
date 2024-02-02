@@ -1,9 +1,0 @@
-
-> @cloakwp/block-data-routers@0.0.1 build /home/kaelan/code/agency-workspace/packages/npm/cloakwp/blocks/data-routers
-> npm run build-ts
-
-
-> @cloakwp/block-data-routers@0.0.1 build-ts
-> tsc-silent -p tsconfig.json --suppress
-
-Using TypeScript compiler version 5.3.2 from /home/kaelan/code/agency-workspace/packages/npm/cloakwp/blocks/data-routers/node_modules/typescript/lib/typescript.js
