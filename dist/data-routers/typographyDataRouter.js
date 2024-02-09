@@ -1,10 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.typographyDataRouter = void 0;
-const cloakwp_1 = require("cloakwp");
-const styles_1 = require("@cloakui/styles");
-const typographyDataRouter = (block) => {
-    const { classes, styles } = (0, cloakwp_1.wpBlockStyleBuilder)(block);
+import { wpBlockStyleBuilder } from "cloakwp/blocks";
+import { cx } from "@cloakui/styles";
+export const typographyDataRouter = (block) => {
+    const { classes, styles } = wpBlockStyleBuilder(block);
     const { context: { parent } = {}, attrs: { fontSize } = {} } = block;
     let customClasses = [];
     customClasses.push(block?.attrs?.backgroundColor ? "p-6" : "mb-6");
@@ -18,9 +15,8 @@ const typographyDataRouter = (block) => {
         customClasses.push("text-xl leading-relaxed font-light");
     }
     return {
-        className: (0, styles_1.cx)(classes, customClasses, parent && !styles?.margin && "mb-0 !mt-0"),
+        className: cx(classes, customClasses, parent && !styles?.margin && "mb-0 !mt-0"),
         style: styles,
         children: block.attrs.content,
     };
 };
-exports.typographyDataRouter = typographyDataRouter;

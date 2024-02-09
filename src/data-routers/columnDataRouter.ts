@@ -1,4 +1,4 @@
-import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp";
+import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp/blocks";
 import { cx } from "@cloakui/styles";
 import { type GenericParentComponent } from "@cloakui/types";
 
@@ -20,7 +20,9 @@ export const columnDataRouter: WPDataRouter<
     context: { index, customProps: { colSpans } = {} },
   } = block;
 
-  const children = blockRenderer.render(innerBlocks, { parent: block });
+  const children = blockRenderer.render(innerBlocks, {
+    parent: block,
+  });
 
   // TODO: default blockGap value that isn't 0?
 

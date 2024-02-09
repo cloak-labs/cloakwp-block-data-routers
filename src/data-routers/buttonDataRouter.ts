@@ -1,6 +1,6 @@
 import { cx } from "@cloakui/styles";
 import { excludeClassNamesStartingWith } from "@cloakui/utils";
-import { WPDataRouter, wpBlockStyleBuilder } from "cloakwp";
+import { WPDataRouter, wpBlockStyleBuilder } from "cloakwp/blocks";
 
 export const buttonDataRouter: WPDataRouter = (block) => {
   const { classes, styles } = wpBlockStyleBuilder(block);

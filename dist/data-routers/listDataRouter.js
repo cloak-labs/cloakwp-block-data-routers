@@ -1,10 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.listDataRouter = void 0;
-const cloakwp_1 = require("cloakwp");
-const styles_1 = require("@cloakui/styles");
-const listDataRouter = (block, blockRenderer) => {
-    const { classes, styles } = (0, cloakwp_1.wpBlockStyleBuilder)(block);
+import { wpBlockStyleBuilder } from "cloakwp/blocks";
+import { cx } from "@cloakui/styles";
+export const listDataRouter = (block, blockRenderer) => {
+    const { classes, styles } = wpBlockStyleBuilder(block);
     const { attrs: { ordered, values } = {}, innerBlocks, context: { parent }, } = block;
     let children;
     if (innerBlocks?.length) {
@@ -16,9 +13,8 @@ const listDataRouter = (block, blockRenderer) => {
     }
     return {
         as: ordered ? "ol" : "ul",
-        className: (0, styles_1.cx)(classes, ordered ? "list-decimal" : "list-disc", !parent && "mb-6"),
+        className: cx(classes, ordered ? "list-decimal" : "list-disc", !parent && "mb-6"),
         style: styles,
         children,
     };
 };
-exports.listDataRouter = listDataRouter;

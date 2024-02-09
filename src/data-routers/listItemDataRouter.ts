@@ -1,4 +1,4 @@
-import { wpBlockStyleBuilder, WPDataRouter } from "cloakwp";
+import { wpBlockStyleBuilder, WPDataRouter } from "cloakwp/blocks";
 import { cx } from "@cloakui/styles";
 import { TTypographyListItemProps } from "@cloakui/types";
 
@@ -18,7 +18,7 @@ export const listItemDataRouter: WPDataRouter<TTypographyListItemProps> = (
     // using WP v6.1 or later, where the `core/list-item` inner block was introduced rather than baking all the <li>'s into the `block.attrs.values` field
     children = blockRenderer.render(innerBlocks, { parent: block });
   } else {
-    children = values;
+    children = values || null;
   }
 
   return {

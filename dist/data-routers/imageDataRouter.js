@@ -1,12 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.imageDataRouter = void 0;
-const cloakwp_1 = require("cloakwp");
-const styles_1 = require("@cloakui/styles");
-const utils_1 = require("../shared/utils");
-const utils_2 = require("@cloakui/utils");
-const imageDataRouter = (block) => {
-    const { classes, styles } = (0, cloakwp_1.wpBlockStyleBuilder)(block);
+import { wpBlockStyleBuilder } from "cloakwp/blocks";
+import { cx } from "@cloakui/styles";
+import { getColumnWidths } from "../shared/utils";
+import { getGridLayoutFromColumnWidths } from "@cloakui/utils";
+export const imageDataRouter = (block) => {
+    const { classes, styles } = wpBlockStyleBuilder(block);
     const { parent } = block.context ?? {};
     let { url, alt, caption, href, width = "800", height = "400", align, aspectRatio, scale, className: wpClassName, } = block?.attrs;
     // TODO: set image 'sizes' based on its context (i.e. is it wrapped by parent block? if not, which `align` width does it have.. set sizes accordingly)
@@ -31,8 +28,8 @@ const imageDataRouter = (block) => {
     if (parent?.name == "core/column") {
         const { parent: columnsParent, index: imageColIndex } = parent.context;
         const { innerBlocks: innerColumns } = columnsParent;
-        const columnWidths = (0, utils_1.getColumnWidths)(innerColumns); // get all column width percentage values into an array
-        const { gridCols, colSpans } = (0, utils_2.getGridLayoutFromColumnWidths)(columnWidths);
+        const columnWidths = getColumnWidths(innerColumns); // get all column width percentage values into an array
+        const { gridCols, colSpans } = getGridLayoutFromColumnWidths(columnWidths);
         const imageColWidth = colSpans[imageColIndex] / gridCols;
     }
     let sizes = "(max-width: 768px) calc(100vw - 24px), (max-width: 1024px) 800px, 1000px";
@@ -53,8 +50,8 @@ const imageDataRouter = (block) => {
         alt,
         caption,
         noShadow: wpClassName?.includes("is-style-no-shadow"),
-        className: (0, styles_1.cx)(align == "full" ? "rounded-none" : "rounded-lg", scale == "contain" ? "object-contain" : "object-cover", wpClassName?.includes("is-style-rounded") && "rounded-full", classes),
-        cntrClassName: (0, styles_1.cx)(align == "center" ? "mx-auto" : align == "right" ? "ml-auto" : ""),
+        className: cx(align == "full" ? "rounded-none" : "rounded-lg", scale == "contain" ? "object-contain" : "object-cover", wpClassName?.includes("is-style-rounded") && "rounded-full", classes),
+        cntrClassName: cx(align == "center" ? "mx-auto" : align == "right" ? "ml-auto" : ""),
         cntrStyle: {
             ...styles,
             width: width || "100%",
@@ -66,4 +63,3 @@ const imageDataRouter = (block) => {
         },
     };
 };
-exports.imageDataRouter = imageDataRouter;

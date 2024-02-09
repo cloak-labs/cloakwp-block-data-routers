@@ -1,4 +1,4 @@
-import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp";
+import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp/blocks";
 import { TSeparatorProps } from "@cloakui/types";
 import { cx } from "@cloakui/styles";
 

@@ -1,4 +1,4 @@
-import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp";
+import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp/blocks";
 import { getColumnWidths } from "../shared/utils";
 import { getGridLayoutFromColumnWidths } from "@cloakui/utils";
 import { cx } from "@cloakui/styles";
@@ -20,7 +20,8 @@ export const columnsDataRouter: WPDataRouter<GenericParentComponent> = (
   } = block;
 
   const columnWidths = getColumnWidths(innerBlocks); // get all column width percentage values into an array
-  const { gridCols, colSpans } = getGridLayoutFromColumnWidths(columnWidths);
+  const { gridCols, colSpans = null } =
+    getGridLayoutFromColumnWidths(columnWidths);
 
   const gridColsClass = `grid-cols-${gridCols}`;
 

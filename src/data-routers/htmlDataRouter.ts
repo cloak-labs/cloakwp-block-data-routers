@@ -1,4 +1,4 @@
-import { wpBlockStyleBuilder, WPDataRouter } from "cloakwp";
+import { wpBlockStyleBuilder, WPDataRouter } from "cloakwp/blocks";
 import { cx } from "@cloakui/styles";
 import { THtmlProps } from "@cloakui/types";
 
