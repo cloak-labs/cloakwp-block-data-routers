@@ -9,3 +9,4 @@ export { htmlDataRouter } from "./data-routers/htmlDataRouter";
 export { columnsDataRouter } from "./data-routers/columnsDataRouter";
 export { columnDataRouter } from "./data-routers/columnDataRouter";
 export { separatorDataRouter } from "./data-routers/separatorDataRouter";
+export { getColumnWidths } from "./shared/utils";
