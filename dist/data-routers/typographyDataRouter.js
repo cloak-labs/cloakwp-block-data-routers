@@ -2,7 +2,7 @@ import { wpBlockStyleBuilder } from "cloakwp/blocks";
 import { cx } from "@cloakui/styles";
 export const typographyDataRouter = (block) => {
     const { classes, styles } = wpBlockStyleBuilder(block);
-    const { context: { parent } = {}, attrs: { fontSize } = {} } = block;
+    const { context: { parent } = {}, attrs: { fontSize, style: { spacing } = {} } = {}, } = block;
     let customClasses = [];
     customClasses.push(block?.attrs?.backgroundColor ? "p-6" : "mb-6");
     if (fontSize) {
@@ -15,7 +15,11 @@ export const typographyDataRouter = (block) => {
         customClasses.push("text-xl leading-relaxed font-light");
     }
     return {
-        className: cx(classes, customClasses, parent && !styles?.margin && "mb-0 !mt-0"),
+        className: cx(classes, customClasses, parent &&
+            (!spacing?.margin?.top || spacing?.margin?.top == "0") &&
+            "!mt-0", parent &&
+            (!spacing?.margin?.bottom || spacing?.margin?.bottom == "0") &&
+            "!mb-0"),
         style: styles,
         children: block.attrs.content,
     };

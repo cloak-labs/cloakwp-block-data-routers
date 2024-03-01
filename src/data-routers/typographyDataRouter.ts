@@ -6,7 +6,10 @@ export const typographyDataRouter: WPDataRouter<TTypographyProps> = (
   block
 ): TTypographyProps => {
   const { classes, styles } = wpBlockStyleBuilder(block);
-  const { context: { parent } = {}, attrs: { fontSize } = {} } = block;
+  const {
+    context: { parent } = {},
+    attrs: { fontSize, style: { spacing } = {} } = {},
+  } = block;
 
   let customClasses = [];
   customClasses.push(block?.attrs?.backgroundColor ? "p-6" : "mb-6");
@@ -35,7 +38,12 @@ export const typographyDataRouter: WPDataRouter<TTypographyProps> = (
     className: cx(
       classes,
       customClasses,
-      parent && !styles?.margin && "mb-0 !mt-0"
+      parent &&
+        (!spacing?.margin?.top || spacing?.margin?.top == "0") &&
+        "!mt-0",
+      parent &&
+        (!spacing?.margin?.bottom || spacing?.margin?.bottom == "0") &&
+        "!mb-0"
     ),
     style: styles,
     children: block.attrs.content,
