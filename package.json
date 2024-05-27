@@ -51,9 +51,9 @@
     "typescript": "^5.3.2"
   },
   "peerDependencies": {
-    "@cloakui/styles": ">= 0.3.0",
+    "@cloakui/styles": ">= 0.3.1",
     "@cloakui/utils": ">= 0.1.2",
-    "cloakwp": ">= 0.6.7"
+    "cloakwp": ">= 0.6.8"
   },
   "publishConfig": {
     "access": "public"
