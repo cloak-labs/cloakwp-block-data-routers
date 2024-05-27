@@ -1,8 +1,6 @@
 import { wpBlockStyleBuilder, WPDataRouter } from "cloakwp/blocks";
 import { cx } from "@cloakui/styles";
 import { TImageProps } from "@cloakui/types";
-import { getColumnWidths } from "../shared/utils";
-import { getGridLayoutFromColumnWidths } from "@cloakui/utils";
 
 export const imageDataRouter: WPDataRouter<TImageProps> = (
   block
@@ -21,14 +19,14 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
     className: wpClassName,
   } = block?.attrs;
 
-  const aspect = {
-    "1": 1 / 1, // square
-    "4/3": 4 / 3, // standard
-    "3/4": 3 / 4, // portrait
-    "3/2": 3 / 2, // classic
-    "2/3": 2 / 3, // classic portrait
-    "16/9": 16 / 9, // wide
-    "9/16": 9 / 16, // tall
+  const aspectRatioClass = {
+    "1": "aspect-square",
+    "4/3": "aspect-standard",
+    "3/4": "aspect-portrait",
+    "3/2": "aspect-classic",
+    "2/3": "aspect-classic-portrait",
+    "16/9": "aspect-video",
+    "9/16": "aspect-tall",
   }[aspectRatio];
 
   return {
@@ -39,9 +37,13 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
     alt,
     caption,
     className: cx(
+      "aspect-auto",
       align == "full" ? "rounded-none" : "rounded-lg",
       scale == "contain" ? "object-contain" : "object-cover",
-      wpClassName?.includes("is-style-rounded") && "rounded-full",
+      wpClassName?.split(" ").includes("is-style-rounded") && "rounded-full",
+      wpClassName?.split(" ").includes("is-style-rounded-none") &&
+        "rounded-none",
+      aspectRatioClass,
       classes
     ),
     cntrClassName: cx(
@@ -53,7 +55,6 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
       maxWidth: "100%",
     },
     style: {
-      aspectRatio: aspect ?? "auto",
       height: height ?? "auto",
     },
   };

@@ -11,6 +11,7 @@ export const columnsDataRouter: WPDataRouter<GenericParentComponent> = (
   const { classes, styles } = wpBlockStyleBuilder(block);
 
   const {
+    context: { parent },
     innerBlocks,
     attrs: {
       className,
@@ -27,10 +28,11 @@ export const columnsDataRouter: WPDataRouter<GenericParentComponent> = (
 
   const responsiveColClasses = {
     1: gridColsClass,
-    2: `grid-cols-1 sm:${gridColsClass}`,
+    2: `grid-cols-1 md:${gridColsClass}`,
     3: `grid-cols-1 sm:grid-cols-2 md:${gridColsClass}`,
     4: `grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:${gridColsClass}`,
-  }[Math.min(gridCols, 4)];
+  }[Math.min(innerBlocks.length, 4)];
+  // }[Math.min(gridCols, 4)];
 
   const children = blockRenderer.render(innerBlocks, {
     parent: block,
@@ -42,7 +44,7 @@ export const columnsDataRouter: WPDataRouter<GenericParentComponent> = (
       classes,
       className,
       isStackedOnMobile ? responsiveColClasses : gridColsClass,
-      !margin && "my-20"
+      !margin && !parent && "my-20"
     ),
     style: styles,
     children,

@@ -40,10 +40,10 @@ export const typographyDataRouter: WPDataRouter<TTypographyProps> = (
       customClasses,
       parent &&
         (!spacing?.margin?.top || spacing?.margin?.top == "0") &&
-        "!mt-0",
+        "mt-0",
       parent &&
         (!spacing?.margin?.bottom || spacing?.margin?.bottom == "0") &&
-        "!mb-0"
+        "mb-0"
     ),
     style: styles,
     children: block.attrs.content,

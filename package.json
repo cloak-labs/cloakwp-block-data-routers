@@ -53,7 +53,7 @@
   "peerDependencies": {
     "@cloakui/styles": ">= 0.3.0",
     "@cloakui/utils": ">= 0.1.2",
-    "cloakwp": ">= 0.6.6"
+    "cloakwp": ">= 0.6.7"
   },
   "publishConfig": {
     "access": "public"
