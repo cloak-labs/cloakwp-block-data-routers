@@ -9,10 +9,13 @@ export const buttonDataRouter = (block) => {
     let { className, text, url } = block.attrs;
     let variant = "default";
     if (className) {
-        if (className.includes("is-style-outline"))
+        const classList = className.split(" ");
+        if (classList.includes("is-style-outline"))
             variant = "outline";
-        else if (className.includes("is-style-secondary"))
+        else if (classList.includes("is-style-secondary"))
             variant = "secondary";
+        else if (classList.includes("is-style-ghost"))
+            variant = "ghost";
     }
     let props = {
         variants: { variant },

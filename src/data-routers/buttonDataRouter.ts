@@ -15,8 +15,10 @@ export const buttonDataRouter: WPDataRouter = (block) => {
 
   let variant = "default";
   if (className) {
-    if (className.includes("is-style-outline")) variant = "outline";
-    else if (className.includes("is-style-secondary")) variant = "secondary";
+    const classList = className.split(" ");
+    if (classList.includes("is-style-outline")) variant = "outline";
+    else if (classList.includes("is-style-secondary")) variant = "secondary";
+    else if (classList.includes("is-style-ghost")) variant = "ghost";
   }
 
   let props: any = {
