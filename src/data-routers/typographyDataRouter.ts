@@ -34,6 +34,10 @@ export const typographyDataRouter: WPDataRouter<TTypographyProps> = (
     customClasses.push("text-xl leading-relaxed font-light");
   }
 
+  if (block.name == "core/paragraph" && !parent) {
+    customClasses.push("[&:not(:first-child)]:!mt-4");
+  }
+
   return {
     className: cx(
       classes,
