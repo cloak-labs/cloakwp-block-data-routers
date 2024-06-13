@@ -1,6 +1,6 @@
 {
   "name": "@cloakwp/block-data-routers",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A collection of DataRouter functions to accompany all @cloakwp/blocks-{framework} packages.",
   "main": "dist/index",
   "types": "dist/index.d.ts",
