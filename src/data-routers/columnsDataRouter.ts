@@ -1,13 +1,12 @@
 import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp/blocks";
 import { getColumnWidths } from "../shared/utils";
 import { getGridLayoutFromColumnWidths } from "@cloakui/utils";
-import { cx } from "@cloakui/styles";
-import { type GenericParentComponent } from "@cloakui/types";
+import { type GenericParentComponentWithCx } from "@cloakui/types";
 
-export const columnsDataRouter: WPDataRouter<GenericParentComponent> = (
+export const columnsDataRouter: WPDataRouter<GenericParentComponentWithCx> = (
   block,
   blockRenderer
-): GenericParentComponent => {
+): GenericParentComponentWithCx => {
   const { classes, styles } = wpBlockStyleBuilder(block);
 
   const {
@@ -40,12 +39,12 @@ export const columnsDataRouter: WPDataRouter<GenericParentComponent> = (
   });
 
   return {
-    className: cx(
+    className: [
       classes,
       className,
       isStackedOnMobile ? responsiveColClasses : gridColsClass,
-      !margin && !parent && "my-20"
-    ),
+      !margin && !parent && "my-20",
+    ],
     style: styles,
     children,
   };

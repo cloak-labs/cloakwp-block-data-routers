@@ -1,10 +1,10 @@
-import { cx } from "@cloakui/styles";
-import { excludeClassNamesStartingWith } from "@cloakui/utils";
+// import { excludeClassNamesStartingWith } from "@cloakui/utils";
 import { wpBlockStyleBuilder } from "cloakwp/blocks";
 export const buttonDataRouter = (block) => {
     const { classes, styles } = wpBlockStyleBuilder(block);
     // remove bg-* and text-* classes from computed classes, because the button `variant` prop will handle applying these classes
-    const finalClasses = excludeClassNamesStartingWith(classes, ["bg-", "text-"]);
+    // const finalClasses = excludeClassNamesStartingWith(classes, ["bg-", "text-"]);
+    const finalClasses = classes;
     const { context: { parent }, } = block;
     let { className, text, url } = block.attrs;
     let variant = "default";
@@ -19,7 +19,7 @@ export const buttonDataRouter = (block) => {
     }
     let props = {
         variants: { variant },
-        className: cx(!parent && "mb-4", finalClasses),
+        className: [!parent && "mb-4", finalClasses],
         style: styles,
         children: text,
     };

@@ -1,7 +1,6 @@
 import { wpBlockStyleBuilder } from "cloakwp/blocks";
 import { getColumnWidths } from "../shared/utils";
 import { getGridLayoutFromColumnWidths } from "@cloakui/utils";
-import { cx } from "@cloakui/styles";
 export const columnsDataRouter = (block, blockRenderer) => {
     const { classes, styles } = wpBlockStyleBuilder(block);
     const { context: { parent }, innerBlocks, attrs: { className, isStackedOnMobile, style: { spacing: { margin } = {} } = {}, } = {}, } = block;
@@ -20,7 +19,12 @@ export const columnsDataRouter = (block, blockRenderer) => {
         customProps: { colSpans },
     });
     return {
-        className: cx(classes, className, isStackedOnMobile ? responsiveColClasses : gridColsClass, !margin && !parent && "my-20"),
+        className: [
+            classes,
+            className,
+            isStackedOnMobile ? responsiveColClasses : gridColsClass,
+            !margin && !parent && "my-20",
+        ],
         style: styles,
         children,
     };

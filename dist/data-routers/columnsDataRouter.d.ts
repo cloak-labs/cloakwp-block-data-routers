@@ -1,3 +1,3 @@
 import { type WPDataRouter } from "cloakwp/blocks";
-import { type GenericParentComponent } from "@cloakui/types";
-export declare const columnsDataRouter: WPDataRouter<GenericParentComponent>;
+import { type GenericParentComponentWithCx } from "@cloakui/types";
+export declare const columnsDataRouter: WPDataRouter<GenericParentComponentWithCx>;

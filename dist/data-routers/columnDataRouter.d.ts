@@ -1,5 +1,5 @@
 import { type WPDataRouter } from "cloakwp/blocks";
-import { type GenericParentComponent } from "@cloakui/types";
-export declare const columnDataRouter: WPDataRouter<GenericParentComponent & {
+import { type GenericParentComponentWithCx } from "@cloakui/types";
+export declare const columnDataRouter: WPDataRouter<GenericParentComponentWithCx & {
     span: number;
 }>;

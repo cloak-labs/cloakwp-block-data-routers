@@ -1,5 +1,4 @@
 import { wpBlockStyleBuilder } from "cloakwp/blocks";
-import { cx } from "@cloakui/styles";
 export const listItemDataRouter = (block, blockRenderer) => {
     const { classes, styles } = wpBlockStyleBuilder(block);
     const { attrs: { values, content, className } = {}, innerBlocks,
@@ -15,7 +14,7 @@ export const listItemDataRouter = (block, blockRenderer) => {
     }
     return {
         content,
-        className: cx(classes, className),
+        className: [classes, className],
         style: styles,
         children,
     };

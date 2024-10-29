@@ -1,22 +1,20 @@
 import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp/blocks";
-import { cx } from "@cloakui/styles";
-import { type GenericParentComponent } from "@cloakui/types";
+import { type GenericParentComponentWithCx } from "@cloakui/types";
 
 export const columnDataRouter: WPDataRouter<
-  GenericParentComponent & {
+  GenericParentComponentWithCx & {
     span: number;
   }
 > = (
   block,
   blockRenderer
-): GenericParentComponent & {
+): GenericParentComponentWithCx & {
   span: number;
 } => {
   const { classes, styles } = wpBlockStyleBuilder(block);
 
   const {
     innerBlocks,
-    attrs: { className } = {},
     context: { index, customProps: { colSpans } = {} },
   } = block;
 
@@ -24,11 +22,9 @@ export const columnDataRouter: WPDataRouter<
     parent: block,
   });
 
-  // TODO: default blockGap value that isn't 0?
-
   return {
     span: colSpans[index],
-    className: cx(classes, className),
+    className: classes,
     style: styles,
     children,
   };

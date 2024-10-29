@@ -14,6 +14,9 @@ export const typographyDataRouter = (block) => {
         parent?.attrs?.className?.includes("is-large")) {
         customClasses.push("text-xl leading-relaxed font-light");
     }
+    if (block.name == "core/paragraph" && !parent) {
+        customClasses.push("[&:not(:first-child)]:!mt-4");
+    }
     return {
         className: cx(classes, customClasses, parent &&
             (!spacing?.margin?.top || spacing?.margin?.top == "0") &&

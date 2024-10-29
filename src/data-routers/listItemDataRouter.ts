@@ -1,6 +1,5 @@
-import { wpBlockStyleBuilder, WPDataRouter } from "cloakwp/blocks";
-import { cx } from "@cloakui/styles";
-import { TTypographyListItemProps } from "@cloakui/types";
+import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp/blocks";
+import { type TTypographyListItemProps } from "@cloakui/types";
 
 export const listItemDataRouter: WPDataRouter<TTypographyListItemProps> = (
   block,
@@ -23,7 +22,7 @@ export const listItemDataRouter: WPDataRouter<TTypographyListItemProps> = (
 
   return {
     content,
-    className: cx(classes, className),
+    className: [classes, className],
     style: styles,
     children,
   };

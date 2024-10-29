@@ -11,13 +11,16 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
     alt,
     caption,
     href,
-    width = "800",
-    height = "400",
+    width,
+    height,
     align,
     aspectRatio,
     scale,
     className: wpClassName,
+    style = {},
   } = block?.attrs;
+
+  const { layout: { flexSize } = {} } = style;
 
   const aspectRatioClass = {
     "1": "aspect-square",
@@ -46,15 +49,16 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
       aspectRatioClass,
       classes
     ),
-    cntrClassName: cx(
-      align == "center" ? "mx-auto" : align == "right" ? "ml-auto" : ""
-    ),
+    cntrClassName: [
+      align == "center" ? "mx-auto" : align == "right" ? "ml-auto" : "",
+    ],
     cntrStyle: {
       ...styles,
-      width: width || "100%",
+      width: flexSize || width ? `${width}px` : "100%",
       maxWidth: "100%",
     },
     style: {
+      ...(styles?.borderRadius ? { borderRadius: styles?.borderRadius } : {}),
       height: height ?? "auto",
     },
   };

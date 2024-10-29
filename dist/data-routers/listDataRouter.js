@@ -1,5 +1,4 @@
 import { wpBlockStyleBuilder } from "cloakwp/blocks";
-import { cx } from "@cloakui/styles";
 export const listDataRouter = (block, blockRenderer) => {
     const { classes, styles } = wpBlockStyleBuilder(block);
     const { attrs: { ordered, values } = {}, innerBlocks, context: { parent }, } = block;
@@ -13,7 +12,11 @@ export const listDataRouter = (block, blockRenderer) => {
     }
     return {
         as: ordered ? "ol" : "ul",
-        className: cx(classes, ordered ? "list-decimal" : "list-disc", !parent && "mb-6"),
+        className: [
+            classes,
+            ordered ? "list-decimal" : "list-disc",
+            !parent && "mb-6",
+        ],
         style: styles,
         children,
     };
