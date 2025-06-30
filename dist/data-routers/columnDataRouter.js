@@ -7,6 +7,7 @@ export const columnDataRouter = (block, blockRenderer) => {
     });
     return {
         span: colSpans[index],
+        totalSiblings: colSpans.length,
         className: classes,
         style: styles,
         children,

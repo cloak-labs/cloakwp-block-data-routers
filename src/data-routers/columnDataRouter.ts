@@ -4,12 +4,14 @@ import { type GenericParentComponentWithCx } from "@cloakui/types";
 export const columnDataRouter: WPDataRouter<
   GenericParentComponentWithCx & {
     span: number;
+    totalSiblings: number;
   }
 > = (
   block,
   blockRenderer
 ): GenericParentComponentWithCx & {
   span: number;
+  totalSiblings: number;
 } => {
   const { classes, styles } = wpBlockStyleBuilder(block);
 
@@ -24,6 +26,7 @@ export const columnDataRouter: WPDataRouter<
 
   return {
     span: colSpans[index],
+    totalSiblings: colSpans.length,
     className: classes,
     style: styles,
     children,

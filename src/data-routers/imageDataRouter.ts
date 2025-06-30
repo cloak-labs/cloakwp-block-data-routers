@@ -1,12 +1,13 @@
-import { wpBlockStyleBuilder, WPDataRouter } from "cloakwp/blocks";
+import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp/blocks";
 import { cx } from "@cloakui/styles";
-import { TImageProps } from "@cloakui/types";
+import { type TImageProps } from "@cloakui/types";
 
 export const imageDataRouter: WPDataRouter<TImageProps> = (
   block
 ): TImageProps => {
   const { classes, styles } = wpBlockStyleBuilder(block);
-  let {
+
+  const {
     url,
     alt,
     caption,
@@ -18,7 +19,7 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
     scale,
     className: wpClassName,
     style = {},
-  } = block?.attrs;
+  } = block?.attrs ?? {};
 
   const { layout: { flexSize } = {} } = style;
 
@@ -30,7 +31,11 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
     "2/3": "aspect-classic-portrait",
     "16/9": "aspect-video",
     "9/16": "aspect-tall",
+    none: "aspect-none",
   }[aspectRatio];
+
+  const maxWidthViaClass = classes.includes("max-w-");
+  const fullHeightViaClass = classes.includes("h-full");
 
   return {
     src: url,
@@ -41,6 +46,7 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
     caption,
     className: cx(
       "aspect-auto",
+      width && height && "w-auto",
       align == "full" ? "rounded-none" : "rounded-lg",
       scale == "contain" ? "object-contain" : "object-cover",
       wpClassName?.split(" ").includes("is-style-rounded") && "rounded-full",
@@ -54,12 +60,21 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
     ],
     cntrStyle: {
       ...styles,
-      width: flexSize || width ? `${width}px` : "100%",
-      maxWidth: "100%",
+      width:
+        flexSize ||
+        (width
+          ? typeof width === "string" && width.endsWith("px")
+            ? width
+            : `${width}px`
+          : maxWidthViaClass
+          ? "fit-content"
+          : "100%"),
+      height: fullHeightViaClass ? "100%" : "auto",
+      maxWidth: !maxWidthViaClass ? "100%" : undefined,
     },
     style: {
       ...(styles?.borderRadius ? { borderRadius: styles?.borderRadius } : {}),
-      height: height ?? "auto",
+      height: fullHeightViaClass ? "100%" : height ?? "auto",
     },
   };
 };
