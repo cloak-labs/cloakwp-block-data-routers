@@ -47,7 +47,9 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
     className: cx(
       "aspect-auto",
       width && height && "w-auto",
-      align == "full" ? "rounded-none" : "rounded-lg",
+      align == "full" && !block.context.parent
+        ? "rounded-none border-0 shadow-none"
+        : "rounded-lg",
       scale == "contain" ? "object-contain" : "object-cover",
       wpClassName?.split(" ").includes("is-style-rounded") && "rounded-full",
       wpClassName?.split(" ").includes("is-style-rounded-none") &&
