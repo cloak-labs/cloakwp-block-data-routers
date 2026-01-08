@@ -3,7 +3,7 @@ import { getColumnWidths } from "../shared/utils";
 import { getGridLayoutFromColumnWidths } from "@cloakui/utils";
 export const columnsDataRouter = (block, blockRenderer) => {
     const { classes, styles } = wpBlockStyleBuilder(block);
-    const { context: { parent }, innerBlocks, attrs: { className, isStackedOnMobile, style: { spacing: { margin } = {} } = {}, } = {}, } = block;
+    const { context: { parent }, innerBlocks, attrs: { isStackedOnMobile, style: { spacing: { margin } = {} } = {} } = {}, } = block;
     const columnWidths = getColumnWidths(innerBlocks); // get all column width percentage values into an array
     const { gridCols, colSpans = null } = getGridLayoutFromColumnWidths(columnWidths);
     const gridColsClass = `grid-cols-${gridCols}`;
@@ -13,17 +13,15 @@ export const columnsDataRouter = (block, blockRenderer) => {
         3: `grid-cols-1 sm:grid-cols-2 md:${gridColsClass}`,
         4: `grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:${gridColsClass}`,
     }[Math.min(innerBlocks.length, 4)];
-    // }[Math.min(gridCols, 4)];
     const children = blockRenderer.render(innerBlocks, {
         parent: block,
         customProps: { colSpans },
     });
     return {
         className: [
-            classes,
-            className,
             isStackedOnMobile ? responsiveColClasses : gridColsClass,
             !margin && !parent && "my-20",
+            classes,
         ],
         style: styles,
         children,

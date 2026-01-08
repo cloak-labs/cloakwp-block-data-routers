@@ -1,3 +1,3 @@
-import { WPDataRouter } from "cloakwp/blocks";
-import { TImageProps } from "@cloakui/types";
+import { type WPDataRouter } from "cloakwp/blocks";
+import { type TImageProps } from "@cloakui/types";
 export declare const imageDataRouter: WPDataRouter<TImageProps>;

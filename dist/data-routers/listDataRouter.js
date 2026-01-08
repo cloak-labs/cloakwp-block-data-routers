@@ -13,7 +13,11 @@ export const listDataRouter = (block, blockRenderer) => {
     return {
         as: ordered ? "ol" : "ul",
         className: [
-            classes,
+            // remove cntr-start and cntr-end classes, as they get applied to the wrapping container div and conflict with the list's built-in horizontal padding
+            classes
+                .split(" ")
+                .filter((c) => c !== "cntr-start" && c !== "cntr-end")
+                .join(" "),
             ordered ? "list-decimal" : "list-disc",
             !parent && "mb-6",
         ],

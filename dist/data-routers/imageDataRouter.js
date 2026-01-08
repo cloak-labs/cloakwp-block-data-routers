@@ -23,7 +23,9 @@ export const imageDataRouter = (block) => {
         height: parseInt(height) || 400,
         alt,
         caption,
-        className: cx("aspect-auto", width && height && "w-auto", align == "full" ? "rounded-none" : "rounded-lg", scale == "contain" ? "object-contain" : "object-cover", wpClassName?.split(" ").includes("is-style-rounded") && "rounded-full", wpClassName?.split(" ").includes("is-style-rounded-none") &&
+        className: cx("aspect-auto", width && height && "w-auto", align == "full" && !block.context.parent
+            ? "rounded-none border-0 shadow-none"
+            : "rounded-lg", scale == "contain" ? "object-contain" : "object-cover", wpClassName?.split(" ").includes("is-style-rounded") && "rounded-full", wpClassName?.split(" ").includes("is-style-rounded-none") &&
             "rounded-none", aspectRatioClass, classes),
         cntrClassName: [
             align == "center" ? "mx-auto" : align == "right" ? "ml-auto" : "",

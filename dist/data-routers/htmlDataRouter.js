@@ -1,11 +1,10 @@
 import { wpBlockStyleBuilder } from "cloakwp/blocks";
-import { cx } from "@cloakui/styles";
 export const htmlDataRouter = (block) => {
-    const { classes, styles } = wpBlockStyleBuilder(block);
+    const { styles } = wpBlockStyleBuilder(block);
     const { rendered } = block;
     return {
-        className: cx("mb-6", classes),
+        className: "cntr-full",
         style: styles,
-        content: rendered,
+        children: rendered,
     };
 };
