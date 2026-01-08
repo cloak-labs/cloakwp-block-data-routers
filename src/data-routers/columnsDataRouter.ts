@@ -12,11 +12,7 @@ export const columnsDataRouter: WPDataRouter<GenericParentComponentWithCx> = (
   const {
     context: { parent },
     innerBlocks,
-    attrs: {
-      className,
-      isStackedOnMobile,
-      style: { spacing: { margin } = {} } = {},
-    } = {},
+    attrs: { isStackedOnMobile, style: { spacing: { margin } = {} } = {} } = {},
   } = block;
 
   const columnWidths = getColumnWidths(innerBlocks); // get all column width percentage values into an array
@@ -31,7 +27,6 @@ export const columnsDataRouter: WPDataRouter<GenericParentComponentWithCx> = (
     3: `grid-cols-1 sm:grid-cols-2 md:${gridColsClass}`,
     4: `grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:${gridColsClass}`,
   }[Math.min(innerBlocks.length, 4)];
-  // }[Math.min(gridCols, 4)];
 
   const children = blockRenderer.render(innerBlocks, {
     parent: block,
@@ -40,10 +35,9 @@ export const columnsDataRouter: WPDataRouter<GenericParentComponentWithCx> = (
 
   return {
     className: [
-      classes,
-      className,
       isStackedOnMobile ? responsiveColClasses : gridColsClass,
       !margin && !parent && "my-20",
+      classes,
     ],
     style: styles,
     children,
