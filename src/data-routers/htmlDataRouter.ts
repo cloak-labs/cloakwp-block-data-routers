@@ -1,14 +1,13 @@
-import { wpBlockStyleBuilder, WPDataRouter } from "cloakwp/blocks";
-import { cx } from "@cloakui/styles";
-import { THtmlProps } from "@cloakui/types";
+import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp/blocks";
+import { type THtmlProps } from "@cloakui/types";
 
 export const htmlDataRouter: WPDataRouter<THtmlProps> = (block): THtmlProps => {
-  const { classes, styles } = wpBlockStyleBuilder(block);
+  const { styles } = wpBlockStyleBuilder(block);
   const { rendered } = block;
 
   return {
-    className: cx("mb-6", classes),
+    className: "cntr-full",
     style: styles,
-    content: rendered,
+    children: rendered,
   };
 };
