@@ -4,3 +4,4 @@ export declare const getColumnWidths: (innerBlocks: RestApiBlockData[]) => numbe
  * Returns true/false if a given value is serializable to JSON; useful for checking if dataRouter results
  * can be returned as props in Next.js `getStaticProps` or `getServerSideProps`, for example.
  */
+//# sourceMappingURL=utils.d.ts.map

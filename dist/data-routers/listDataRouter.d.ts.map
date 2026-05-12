@@ -1,0 +1,1 @@
+{"version":3,"file":"listDataRouter.d.ts","sourceRoot":"","sources":["../../src/data-routers/listDataRouter.ts"],"names":[],"mappings":"AAAA,OAAO,EAAuB,KAAK,YAAY,EAAE,MAAM,gBAAgB,CAAC;AACxE,OAAO,EAAE,KAAK,oBAAoB,EAAE,MAAM,gBAAgB,CAAC;AAE3D,eAAO,MAAM,cAAc,EAAE,YAAY,CAAC,oBAAoB,CAiC7D,CAAC"}

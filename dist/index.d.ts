@@ -11,3 +11,4 @@ export { columnDataRouter } from "./data-routers/columnDataRouter";
 export { separatorDataRouter } from "./data-routers/separatorDataRouter";
 export { groupDataRouter } from "./data-routers/groupDataRouter";
 export { getColumnWidths } from "./shared/utils";
+//# sourceMappingURL=index.d.ts.map

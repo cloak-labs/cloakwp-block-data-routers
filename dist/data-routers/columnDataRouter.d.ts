@@ -4,3 +4,4 @@ export declare const columnDataRouter: WPDataRouter<GenericParentComponentWithCx
     span: number;
     totalSiblings: number;
 }>;
+//# sourceMappingURL=columnDataRouter.d.ts.map

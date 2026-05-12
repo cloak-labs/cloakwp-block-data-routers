@@ -1,0 +1,1 @@
+{"version":3,"file":"columnDataRouter.d.ts","sourceRoot":"","sources":["../../src/data-routers/columnDataRouter.ts"],"names":[],"mappings":"AAAA,OAAO,EAAuB,KAAK,YAAY,EAAE,MAAM,gBAAgB,CAAC;AACxE,OAAO,EAAE,KAAK,4BAA4B,EAAE,MAAM,gBAAgB,CAAC;AAEnE,eAAO,MAAM,gBAAgB,EAAE,YAAY,CACzC,4BAA4B,GAAG;IAC7B,IAAI,EAAE,MAAM,CAAC;IACb,aAAa,EAAE,MAAM,CAAC;CACvB,CA0BF,CAAC"}

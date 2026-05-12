@@ -1,6 +1,8 @@
 import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp/blocks";
+import { ContentSourceRegistry } from "cloakwp/cms";
 import { cx } from "@cloakui/styles";
 import { type TImageProps } from "@cloakui/types";
+import { splitClassNamesStartingWith } from "@cloakui/utils";
 
 export const imageDataRouter: WPDataRouter<TImageProps> = (
   block
@@ -31,14 +33,19 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
     "2/3": "aspect-classic-portrait",
     "16/9": "aspect-video",
     "9/16": "aspect-tall",
+    "8/7": "aspect-wide-square",
     none: "aspect-none",
   }[aspectRatio];
 
   const maxWidthViaClass = classes.includes("max-w-");
   const fullHeightViaClass = classes.includes("h-full");
 
+  const [marginClasses, remainingClasses] = splitClassNamesStartingWith(classes, ["mb-", "md:mb-", "lg:mb-", "mt-", "md:mt-", "lg:mt-"]);
+
   return {
-    src: url,
+    src: url.startsWith("/")
+      ? ContentSourceRegistry.get("wp")?.getActiveUrl() + url
+      : url,
     href,
     width: parseInt(width) || 800,
     height: parseInt(height) || 400,
@@ -55,10 +62,11 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
       wpClassName?.split(" ").includes("is-style-rounded-none") &&
         "rounded-none",
       aspectRatioClass,
-      classes
+      remainingClasses
     ),
     cntrClassName: [
       align == "center" ? "mx-auto" : align == "right" ? "ml-auto" : "",
+      marginClasses
     ],
     cntrStyle: {
       ...styles,
@@ -76,7 +84,7 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
     },
     style: {
       ...(styles?.borderRadius ? { borderRadius: styles?.borderRadius } : {}),
-      height: fullHeightViaClass ? "100%" : height ?? "auto",
+      height: fullHeightViaClass ? "100%" : height ?? "auto", // TODO: test changing "auto" to "fit-content"
     },
   };
 };

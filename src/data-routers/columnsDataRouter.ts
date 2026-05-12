@@ -24,8 +24,8 @@ export const columnsDataRouter: WPDataRouter<GenericParentComponentWithCx> = (
   const responsiveColClasses = {
     1: gridColsClass,
     2: `grid-cols-1 md:${gridColsClass}`,
-    3: `grid-cols-1 sm:grid-cols-2 md:${gridColsClass}`,
-    4: `grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:${gridColsClass}`,
+    3: `grid-cols-1 sm:grid-cols-2 xmd:${gridColsClass}`,
+    4: `grid-cols-1 sm:grid-cols-2 xmd:grid-cols-3 lg:${gridColsClass}`,
   }[Math.min(innerBlocks.length, 4)];
 
   const children = blockRenderer.render(innerBlocks, {
