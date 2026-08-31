@@ -1,13 +1,8 @@
 import { wpBlockStyleBuilder } from "cloakwp/blocks";
-export const buttonsDataRouter = (block, blockRenderer) => {
+export const buttonsDataRouter = (block) => {
     const { classes, styles } = wpBlockStyleBuilder(block);
-    const { innerBlocks } = block;
-    const children = blockRenderer.render(innerBlocks, {
-        parent: block,
-    });
     return {
         className: classes,
         style: styles,
-        children,
     };
 };

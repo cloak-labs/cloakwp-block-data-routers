@@ -5,7 +5,7 @@ import { type TImageProps } from "@cloakui/types";
 import { splitClassNamesStartingWith } from "@cloakui/utils";
 
 export const imageDataRouter: WPDataRouter<TImageProps> = (
-  block
+  block,
 ): TImageProps => {
   const { classes, styles } = wpBlockStyleBuilder(block);
 
@@ -40,7 +40,10 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
   const maxWidthViaClass = classes.includes("max-w-");
   const fullHeightViaClass = classes.includes("h-full");
 
-  const [marginClasses, remainingClasses] = splitClassNamesStartingWith(classes, ["mb-", "md:mb-", "lg:mb-", "mt-", "md:mt-", "lg:mt-"]);
+  const [remainingClasses, marginClasses] = splitClassNamesStartingWith(
+    classes,
+    ["mb-", "md:mb-", "lg:mb-", "mt-", "md:mt-", "lg:mt-"],
+  );
 
   return {
     src: url.startsWith("/")
@@ -62,11 +65,11 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
       wpClassName?.split(" ").includes("is-style-rounded-none") &&
         "rounded-none",
       aspectRatioClass,
-      remainingClasses
+      remainingClasses,
     ),
     cntrClassName: [
       align == "center" ? "mx-auto" : align == "right" ? "ml-auto" : "",
-      marginClasses
+      marginClasses,
     ],
     cntrStyle: {
       ...styles,
@@ -77,14 +80,14 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
             ? width
             : `${width}px`
           : maxWidthViaClass
-          ? "fit-content"
-          : "100%"),
+            ? "fit-content"
+            : "100%"),
       height: fullHeightViaClass ? "100%" : "auto",
       maxWidth: !maxWidthViaClass ? "100%" : undefined,
     },
     style: {
       ...(styles?.borderRadius ? { borderRadius: styles?.borderRadius } : {}),
-      height: fullHeightViaClass ? "100%" : height ?? "auto", // TODO: test changing "auto" to "fit-content"
+      height: fullHeightViaClass ? "100%" : (height ?? "auto"), // TODO: test changing "auto" to "fit-content"
     },
   };
 };

@@ -1,15 +1,11 @@
 import { wpBlockStyleBuilder } from "cloakwp/blocks";
 import { cx } from "@cloakui/styles";
-export const groupDataRouter = (block, blockRenderer) => {
+export const groupDataRouter = (block) => {
     const { classes, styles } = wpBlockStyleBuilder(block);
-    const { innerBlocks, attrs: { tagName } = {} } = block;
-    const children = blockRenderer.render(innerBlocks, {
-        parent: block,
-    });
+    const { attrs: { tagName } = {} } = block;
     return {
         as: tagName,
         className: cx("bg-root", classes),
         style: styles,
-        children,
     };
 };

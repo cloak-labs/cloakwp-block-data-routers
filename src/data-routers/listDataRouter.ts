@@ -2,27 +2,18 @@ import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp/blocks";
 import { type TTypographyListProps } from "@cloakui/types";
 
 export const listDataRouter: WPDataRouter<TTypographyListProps> = (
-  block,
-  blockRenderer
+  block
 ): TTypographyListProps => {
   const { classes, styles } = wpBlockStyleBuilder(block);
   const {
     attrs: { ordered, values } = {},
-    innerBlocks,
     context: { parent },
   } = block;
-
-  let children;
-  if (innerBlocks?.length) {
-    // using WP v6.1 or later, where the `core/list-item` inner block was introduced rather than baking all the <li>'s into the `block.attrs.values` field
-    children = blockRenderer.render(innerBlocks, { parent: block });
-  } else {
-    children = values;
-  }
 
   return {
     as: ordered ? "ol" : "ul",
     className: [
+      // TODO: These class names are legacy from the legacy container ladder. Test this block with the new approach of "cntr align-start-wide" and adjust below as necessary
       // remove cntr-start and cntr-end classes, as they get applied to the wrapping container div and conflict with the list's built-in horizontal padding
       classes
         .split(" ")
@@ -32,6 +23,8 @@ export const listDataRouter: WPDataRouter<TTypographyListProps> = (
       !parent && "mb-6",
     ],
     style: styles,
-    children,
+    // WP < 6.1 baked <li> HTML into attrs.values. innerBlocks (when present)
+    // overwrite children via nestedBlocks.
+    children: values,
   };
 };

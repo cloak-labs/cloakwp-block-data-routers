@@ -1,15 +1,11 @@
 import { wpBlockStyleBuilder } from "cloakwp/blocks";
-export const columnDataRouter = (block, blockRenderer) => {
+export const columnDataRouter = (block) => {
     const { classes, styles } = wpBlockStyleBuilder(block);
-    const { innerBlocks, context: { index, customProps: { colSpans } = {} }, } = block;
-    const children = blockRenderer.render(innerBlocks, {
-        parent: block,
-    });
+    const { context: { index, fromParent: { colSpans } = {} }, } = block;
     return {
         span: colSpans[index],
         totalSiblings: colSpans.length,
         className: classes,
         style: styles,
-        children,
     };
 };

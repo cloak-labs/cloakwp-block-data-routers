@@ -8,27 +8,23 @@ export const columnDataRouter: WPDataRouter<
   }
 > = (
   block,
-  blockRenderer
-): GenericParentComponentWithCx & {
-  span: number;
-  totalSiblings: number;
-} => {
+): Omit<
+  GenericParentComponentWithCx & {
+    span: number;
+    totalSiblings: number;
+  },
+  "children"
+> => {
   const { classes, styles } = wpBlockStyleBuilder(block);
 
   const {
-    innerBlocks,
-    context: { index, customProps: { colSpans } = {} },
+    context: { index, fromParent: { colSpans } = {} },
   } = block;
-
-  const children = blockRenderer.render(innerBlocks, {
-    parent: block,
-  });
 
   return {
     span: colSpans[index],
     totalSiblings: colSpans.length,
     className: classes,
     style: styles,
-    children,
   };
 };

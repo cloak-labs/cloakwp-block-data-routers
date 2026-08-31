@@ -1,3 +1,4 @@
 import { WPDataRouter } from "cloakwp/blocks";
-export declare const buttonsDataRouter: WPDataRouter;
+import { type GenericParentComponentWithCx } from "@cloakui/types";
+export declare const buttonsDataRouter: WPDataRouter<GenericParentComponentWithCx>;
 //# sourceMappingURL=buttonsDataRouter.d.ts.map

@@ -4,20 +4,13 @@ import type { ContainerProps } from "@cloakui/types";
 
 export const groupDataRouter: WPDataRouter<ContainerProps> = (
   block,
-  blockRenderer
-): ContainerProps => {
+): Omit<ContainerProps, "children"> => {
   const { classes, styles } = wpBlockStyleBuilder(block);
-
-  const { innerBlocks, attrs: { tagName } = {} } = block;
-
-  const children = blockRenderer.render(innerBlocks, {
-    parent: block,
-  });
+  const { attrs: { tagName } = {} } = block;
 
   return {
     as: tagName,
     className: cx("bg-root", classes),
     style: styles,
-    children,
   };
 };

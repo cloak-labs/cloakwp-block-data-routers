@@ -1,21 +1,13 @@
 import { wpBlockStyleBuilder } from "cloakwp/blocks";
-export const listItemDataRouter = (block, blockRenderer) => {
+export const listItemDataRouter = (block) => {
     const { classes, styles } = wpBlockStyleBuilder(block);
-    const { attrs: { values, content, className } = {}, innerBlocks,
-    // context: { parent },
-     } = block;
-    let children;
-    if (innerBlocks?.length) {
-        // using WP v6.1 or later, where the `core/list-item` inner block was introduced rather than baking all the <li>'s into the `block.attrs.values` field
-        children = blockRenderer.render(innerBlocks, { parent: block });
-    }
-    else {
-        children = values || null;
-    }
+    const { attrs: { values, content, className } = {} } = block;
     return {
         content,
         className: [classes, className],
         style: styles,
-        children,
+        // Nested lists (and WP < 6.1 attrs.values) — innerBlocks overwrite
+        // children via nestedBlocks when present.
+        children: values || null,
     };
 };

@@ -19,7 +19,7 @@ export const imageDataRouter = (block) => {
     }[aspectRatio];
     const maxWidthViaClass = classes.includes("max-w-");
     const fullHeightViaClass = classes.includes("h-full");
-    const [marginClasses, remainingClasses] = splitClassNamesStartingWith(classes, ["mb-", "md:mb-", "lg:mb-", "mt-", "md:mt-", "lg:mt-"]);
+    const [remainingClasses, marginClasses] = splitClassNamesStartingWith(classes, ["mb-", "md:mb-", "lg:mb-", "mt-", "md:mt-", "lg:mt-"]);
     return {
         src: url.startsWith("/")
             ? ContentSourceRegistry.get("wp")?.getActiveUrl() + url
@@ -35,7 +35,7 @@ export const imageDataRouter = (block) => {
             "rounded-none", aspectRatioClass, remainingClasses),
         cntrClassName: [
             align == "center" ? "mx-auto" : align == "right" ? "ml-auto" : "",
-            marginClasses
+            marginClasses,
         ],
         cntrStyle: {
             ...styles,
@@ -52,7 +52,7 @@ export const imageDataRouter = (block) => {
         },
         style: {
             ...(styles?.borderRadius ? { borderRadius: styles?.borderRadius } : {}),
-            height: fullHeightViaClass ? "100%" : height ?? "auto", // TODO: test changing "auto" to "fit-content"
+            height: fullHeightViaClass ? "100%" : (height ?? "auto"), // TODO: test changing "auto" to "fit-content"
         },
     };
 };
