@@ -2,7 +2,7 @@ import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp/blocks";
 import { type TSeparatorProps } from "@cloakui/types";
 
 export const separatorDataRouter: WPDataRouter<TSeparatorProps> = (
-  block
+  block,
 ): TSeparatorProps => {
   const { classes, styles } = wpBlockStyleBuilder(block);
   return {

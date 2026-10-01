@@ -3,7 +3,7 @@ import { cx } from "@cloakui/styles";
 import { TTypographyProps } from "@cloakui/types";
 
 export const typographyDataRouter: WPDataRouter<TTypographyProps> = (
-  block
+  block,
 ): TTypographyProps => {
   const { classes, styles } = wpBlockStyleBuilder(block);
   const {
@@ -22,7 +22,7 @@ export const typographyDataRouter: WPDataRouter<TTypographyProps> = (
       `md:text-${fontSize}`,
       `lg:text-${fontSize}`,
       `xl:text-${fontSize}`,
-      `2xl:text-${fontSize}`
+      `2xl:text-${fontSize}`,
     );
   }
 
@@ -52,7 +52,7 @@ export const typographyDataRouter: WPDataRouter<TTypographyProps> = (
       defaultClasses,
       classes,
       parent && hasNoTopMargin && "mt-0",
-      parent && hasNoBottomMargin && "mb-0"
+      parent && hasNoBottomMargin && "mb-0",
     ),
     style: styles,
     children: block.attrs.content,

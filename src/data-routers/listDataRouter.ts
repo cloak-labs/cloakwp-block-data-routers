@@ -2,7 +2,7 @@ import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp/blocks";
 import { type TTypographyListProps } from "@cloakui/types";
 
 export const listDataRouter: WPDataRouter<TTypographyListProps> = (
-  block
+  block,
 ): TTypographyListProps => {
   const { classes, styles } = wpBlockStyleBuilder(block);
   const {

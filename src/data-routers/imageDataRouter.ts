@@ -6,7 +6,8 @@ import { type TImageProps } from "@cloakui/types";
 
 /** Editor resize (`width`/`height`) wins; otherwise the attachment's intrinsic size. */
 const positiveDimension = (value: unknown): number | undefined => {
-  const parsed = typeof value === "number" ? value : parseInt(String(value ?? ""), 10);
+  const parsed =
+    typeof value === "number" ? value : parseInt(String(value ?? ""), 10);
   return Number.isFinite(parsed) && parsed > 0 ? parsed : undefined;
 };
 
@@ -59,7 +60,8 @@ export const imageDataRouter: WPDataRouter<TImageProps> = (
       : url,
     href,
     width: positiveDimension(width) ?? positiveDimension(intrinsicWidth) ?? 800,
-    height: positiveDimension(height) ?? positiveDimension(intrinsicHeight) ?? 400,
+    height:
+      positiveDimension(height) ?? positiveDimension(intrinsicHeight) ?? 400,
     alt,
     caption,
     className: cx(
