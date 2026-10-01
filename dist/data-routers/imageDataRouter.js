@@ -1,10 +1,15 @@
 import { wpBlockStyleBuilder } from "cloakwp/blocks";
 import { ContentSourceRegistry } from "cloakwp/cms";
-import { cx } from "@cloakui/styles";
 import { splitClassNamesStartingWith } from "@cloakui/utils";
+import { cx } from "@cloakui/styles";
+/** Editor resize (`width`/`height`) wins; otherwise the attachment's intrinsic size. */
+const positiveDimension = (value) => {
+    const parsed = typeof value === "number" ? value : parseInt(String(value ?? ""), 10);
+    return Number.isFinite(parsed) && parsed > 0 ? parsed : undefined;
+};
 export const imageDataRouter = (block) => {
     const { classes, styles } = wpBlockStyleBuilder(block);
-    const { url, alt, caption, href, width, height, align, aspectRatio, scale, className: wpClassName, style = {}, } = block?.attrs ?? {};
+    const { url, alt, caption, href, width, height, intrinsicWidth, intrinsicHeight, align, aspectRatio, scale, className: wpClassName, style = {}, } = block?.attrs ?? {};
     const { layout: { flexSize } = {} } = style;
     const aspectRatioClass = {
         "1": "aspect-square",
@@ -25,8 +30,8 @@ export const imageDataRouter = (block) => {
             ? ContentSourceRegistry.get("wp")?.getActiveUrl() + url
             : url,
         href,
-        width: parseInt(width) || 800,
-        height: parseInt(height) || 400,
+        width: positiveDimension(width) ?? positiveDimension(intrinsicWidth) ?? 800,
+        height: positiveDimension(height) ?? positiveDimension(intrinsicHeight) ?? 400,
         alt,
         caption,
         className: cx("aspect-auto", width && height && "w-auto", align == "full" && !block.context.parent
