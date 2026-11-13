@@ -1,10 +1,10 @@
-import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp/blocks";
+import { wpBlockFunctionalStyles, type WPDataRouter } from "cloakwp/blocks";
 import { type TTypographyListItemProps } from "@cloakui/types";
 
 export const listItemDataRouter: WPDataRouter<TTypographyListItemProps> = (
   block,
 ): TTypographyListItemProps => {
-  const { classes, styles } = wpBlockStyleBuilder(block);
+  const { classes, styles } = wpBlockFunctionalStyles(block);
   const { attrs: { values, content, className } = {} } = block;
 
   return {

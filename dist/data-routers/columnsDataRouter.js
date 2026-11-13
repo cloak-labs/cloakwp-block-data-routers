@@ -1,7 +1,7 @@
-import { wpBlockStyleBuilder } from "cloakwp/blocks";
+import { wpBlockFunctionalStyles } from "cloakwp/blocks";
 import { getColumnsLayout } from "../shared/utils";
 export const columnsDataRouter = (block) => {
-    const { classes, styles } = wpBlockStyleBuilder(block);
+    const { classes, styles } = wpBlockFunctionalStyles(block);
     const { context: { parent }, innerBlocks, attrs: { isStackedOnMobile, style: { spacing: { margin } = {} } = {} } = {}, } = block;
     const { gridCols } = getColumnsLayout(innerBlocks);
     const gridColsClass = `grid-cols-${gridCols}`;

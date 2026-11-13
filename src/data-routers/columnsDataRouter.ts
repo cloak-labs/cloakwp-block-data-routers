@@ -1,11 +1,11 @@
-import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp/blocks";
+import { wpBlockFunctionalStyles, type WPDataRouter } from "cloakwp/blocks";
 import { getColumnsLayout } from "../shared/utils";
 import { type GenericParentComponentWithCx } from "@cloakui/types";
 
 export const columnsDataRouter: WPDataRouter<GenericParentComponentWithCx> = (
   block,
 ): Omit<GenericParentComponentWithCx, "children"> => {
-  const { classes, styles } = wpBlockStyleBuilder(block);
+  const { classes, styles } = wpBlockFunctionalStyles(block);
 
   const {
     context: { parent },

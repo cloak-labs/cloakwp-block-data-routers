@@ -1,6 +1,6 @@
-import { wpBlockStyleBuilder } from "cloakwp/blocks";
+import { wpBlockFunctionalStyles } from "cloakwp/blocks";
 export const htmlDataRouter = (block) => {
-    const { styles } = wpBlockStyleBuilder(block);
+    const { styles } = wpBlockFunctionalStyles(block);
     const { rendered } = block;
     return {
         className: "cntr-full",

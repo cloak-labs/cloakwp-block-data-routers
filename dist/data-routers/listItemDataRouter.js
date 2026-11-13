@@ -1,6 +1,6 @@
-import { wpBlockStyleBuilder } from "cloakwp/blocks";
+import { wpBlockFunctionalStyles } from "cloakwp/blocks";
 export const listItemDataRouter = (block) => {
-    const { classes, styles } = wpBlockStyleBuilder(block);
+    const { classes, styles } = wpBlockFunctionalStyles(block);
     const { attrs: { values, content, className } = {} } = block;
     return {
         content,

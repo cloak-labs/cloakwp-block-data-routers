@@ -1,4 +1,4 @@
-import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp/blocks";
+import { wpBlockFunctionalStyles, type WPDataRouter } from "cloakwp/blocks";
 import { type GenericParentComponentWithCx } from "@cloakui/types";
 
 export const columnDataRouter: WPDataRouter<
@@ -15,7 +15,7 @@ export const columnDataRouter: WPDataRouter<
   },
   "children"
 > => {
-  const { classes, styles } = wpBlockStyleBuilder(block);
+  const { classes, styles } = wpBlockFunctionalStyles(block);
 
   const {
     context: { index, fromParent: { colSpans } = {} },

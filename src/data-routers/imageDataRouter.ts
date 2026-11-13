@@ -1,4 +1,4 @@
-import { wpBlockStyleBuilder, type WPDataRouter } from "cloakwp/blocks";
+import { wpBlockFunctionalStyles, type WPDataRouter } from "cloakwp/blocks";
 import { ContentSourceRegistry } from "cloakwp/cms";
 import { splitClassNamesStartingWith } from "@cloakui/utils";
 import { cx } from "@cloakui/styles";
@@ -14,7 +14,7 @@ const positiveDimension = (value: unknown): number | undefined => {
 export const imageDataRouter: WPDataRouter<TImageProps> = (
   block,
 ): TImageProps => {
-  const { classes, styles } = wpBlockStyleBuilder(block);
+  const { classes, styles } = wpBlockFunctionalStyles(block);
 
   const {
     url,

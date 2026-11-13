@@ -1,7 +1,7 @@
 // import { excludeClassNamesStartingWith } from "@cloakui/utils";
-import { wpBlockStyleBuilder } from "cloakwp/blocks";
+import { wpBlockFunctionalStyles } from "cloakwp/blocks";
 export const buttonDataRouter = (block) => {
-    const { classes, styles } = wpBlockStyleBuilder(block);
+    const { classes, styles } = wpBlockFunctionalStyles(block);
     // remove bg-* and text-* classes from computed classes, because the button `variant` prop will handle applying these classes
     // const finalClasses = excludeClassNamesStartingWith(classes, ["bg-", "text-"]);
     const finalClasses = classes;

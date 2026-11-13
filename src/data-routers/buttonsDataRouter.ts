@@ -1,10 +1,10 @@
-import { WPDataRouter, wpBlockStyleBuilder } from "cloakwp/blocks";
+import { WPDataRouter, wpBlockFunctionalStyles } from "cloakwp/blocks";
 import { type GenericParentComponentWithCx } from "@cloakui/types";
 
 export const buttonsDataRouter: WPDataRouter<GenericParentComponentWithCx> = (
   block,
 ): Omit<GenericParentComponentWithCx, "children"> => {
-  const { classes, styles } = wpBlockStyleBuilder(block);
+  const { classes, styles } = wpBlockFunctionalStyles(block);
 
   return {
     className: classes,

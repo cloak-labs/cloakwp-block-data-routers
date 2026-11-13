@@ -1,1 +1,1 @@
-{"version":3,"file":"groupDataRouter.d.ts","sourceRoot":"","sources":["../../src/data-routers/groupDataRouter.ts"],"names":[],"mappings":"AAAA,OAAO,EAAuB,KAAK,YAAY,EAAE,MAAM,gBAAgB,CAAC;AAExE,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,gBAAgB,CAAC;AAErD,eAAO,MAAM,eAAe,EAAE,YAAY,CAAC,cAAc,CAWxD,CAAC"}
+{"version":3,"file":"groupDataRouter.d.ts","sourceRoot":"","sources":["../../src/data-routers/groupDataRouter.ts"],"names":[],"mappings":"AAAA,OAAO,EAA2B,KAAK,YAAY,EAAE,MAAM,gBAAgB,CAAC;AAE5E,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,gBAAgB,CAAC;AAErD,eAAO,MAAM,eAAe,EAAE,YAAY,CAAC,cAAc,CAWxD,CAAC"}

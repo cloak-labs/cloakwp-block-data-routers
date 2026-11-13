@@ -1,4 +1,4 @@
-import { wpBlockStyleBuilder } from "cloakwp/blocks";
+import { wpBlockFunctionalStyles } from "cloakwp/blocks";
 import { ContentSourceRegistry } from "cloakwp/cms";
 import { splitClassNamesStartingWith } from "@cloakui/utils";
 import { cx } from "@cloakui/styles";
@@ -8,7 +8,7 @@ const positiveDimension = (value) => {
     return Number.isFinite(parsed) && parsed > 0 ? parsed : undefined;
 };
 export const imageDataRouter = (block) => {
-    const { classes, styles } = wpBlockStyleBuilder(block);
+    const { classes, styles } = wpBlockFunctionalStyles(block);
     const { url, alt, caption, href, width, height, intrinsicWidth, intrinsicHeight, align, aspectRatio, scale, className: wpClassName, style = {}, } = block?.attrs ?? {};
     const { layout: { flexSize } = {} } = style;
     const aspectRatioClass = {

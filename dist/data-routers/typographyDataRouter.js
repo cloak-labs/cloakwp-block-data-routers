@@ -1,11 +1,11 @@
-import { wpBlockStyleBuilder } from "cloakwp/blocks";
+import { wpBlockFunctionalStyles } from "cloakwp/blocks";
 import { cx } from "@cloakui/styles";
 export const typographyDataRouter = (block) => {
-    const { classes, styles } = wpBlockStyleBuilder(block);
+    const { classes, styles } = wpBlockFunctionalStyles(block);
     const { context: { parent } = {}, attrs: { fontSize, style: { spacing } = {}, level } = {}, } = block;
     let defaultClasses = [];
     defaultClasses.push(block?.attrs?.backgroundColor ? "p-6" : "mb-6");
-    if (fontSize) {
+    if (fontSize && !block.__cloakBlockStyles) {
         // if user provides a custom font size, we must add breakpoint variations of that font-size to fully override the default sizes:
         defaultClasses.push(`xs:text-${fontSize}`, `sm:text-${fontSize}`, `md:text-${fontSize}`, `lg:text-${fontSize}`, `xl:text-${fontSize}`, `2xl:text-${fontSize}`);
     }
